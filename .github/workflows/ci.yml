@@ -1,0 +1,31 @@
+name: "Test & Validate"
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    name: Test RegEx
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: nekowinston/setup-deno@v1
+
+      - name: fmt
+        run: deno fmt --check
+
+      - name: lint
+        run: deno lint --compact
+      
+      - name: test
+        run: deno test
+
+  validate:
+    name: Validate Renovate Config
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      - run: npx --package renovate -- renovate-config-validator default.json ./sources/*

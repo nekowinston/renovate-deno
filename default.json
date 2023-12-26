@@ -1,0 +1,9 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "github>nekowinston/renovate-deno//sources/deno-land",
+    "github>nekowinston/renovate-deno//sources/npm",
+    "github>nekowinston/renovate-deno//sources/github-tag",
+    "github>nekowinston/renovate-deno//sources/nest-land"
+  ]
+}
